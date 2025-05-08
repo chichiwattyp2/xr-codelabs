@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import androidx.xr.compose.spatial.Subspace
+import androidx.xr.compose.subspace.SpatialCurvedRow
 import androidx.xr.compose.subspace.SpatialPanel
-import androidx.xr.compose.subspace.SpatialRow
 import androidx.xr.compose.subspace.layout.SubspaceModifier
 import androidx.xr.compose.subspace.layout.height
 import androidx.xr.compose.subspace.layout.movable
@@ -81,7 +81,7 @@ fun XRFundamentalsApp(
         }
     }
     Subspace {
-        SpatialRow(
+        SpatialCurvedRow(
             curveRadius = 825.dp
         ) {
             SpatialPanel(
