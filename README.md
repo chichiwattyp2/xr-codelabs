@@ -6,6 +6,7 @@ you through best practices of building apps for XR devices.
 
 - [Learn Android XR Fundamentals](/xr-fundamentals/)
   - [Part 1 - Modes and Spatial Panels](https://developer.android.com/codelabs/xr-fundamentals-part-1)
+  - [Part 2 - Orbiters and Spatial Environments](https://developer.android.com/codelabs/xr-fundamentals-part-2)
 
 Clone the repo or download and unarchive the ZIP file. The folders in the repo
 contain Android Studio projects that enable you to modify and build the sample
