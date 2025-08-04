@@ -115,11 +115,10 @@ fun XRFundamentalsApp(
                                 currentEnvironmentOptionIndex =
                                     (currentEnvironmentOptionIndex + 1) % ENVIRONMENT_OPTIONS.size
 
-                                session.scene.spatialEnvironment.setSpatialEnvironmentPreference(
+                                session.scene.spatialEnvironment.preferredSpatialEnvironment =
                                     ENVIRONMENT_OPTIONS[currentEnvironmentOptionIndex].toSpatialEnvironmentPreference(
                                         session
                                     )
-                                )
                             }
                         }
                     )

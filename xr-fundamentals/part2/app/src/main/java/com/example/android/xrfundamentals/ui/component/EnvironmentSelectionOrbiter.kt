@@ -26,9 +26,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.xr.compose.spatial.EdgeOffset
+import androidx.xr.compose.spatial.ContentEdge
 import androidx.xr.compose.spatial.Orbiter
-import androidx.xr.compose.spatial.OrbiterEdge
+import androidx.xr.compose.spatial.OrbiterOffsetType
 import androidx.xr.compose.subspace.layout.SpatialRoundedCornerShape
 import com.example.android.xrfundamentals.R
 
@@ -38,9 +38,10 @@ fun EnvironmentSelectionOrbiter(
     onClick: () -> Unit = {},
 ) {
     Orbiter(
-        position = OrbiterEdge.Top,
+        position = ContentEdge.Top,
         alignment = Alignment.Start,
-        offset = EdgeOffset.inner(16.dp),
+        offset = 16.dp,
+        offsetType = OrbiterOffsetType.InnerEdge,
         shape = SpatialRoundedCornerShape(
             CornerSize(100)
         )

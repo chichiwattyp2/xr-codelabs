@@ -24,10 +24,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.xr.compose.platform.LocalHasXrSpatialFeature
-import androidx.xr.compose.spatial.EdgeOffset
+import androidx.xr.compose.platform.LocalSpatialConfiguration
+import androidx.xr.compose.spatial.ContentEdge
 import androidx.xr.compose.spatial.Orbiter
-import androidx.xr.compose.spatial.OrbiterEdge
+import androidx.xr.compose.spatial.OrbiterOffsetType
 import androidx.xr.compose.subspace.layout.SpatialRoundedCornerShape
 import com.example.android.xrfundamentals.R
 
@@ -38,11 +38,12 @@ fun XRFundamentalsTopAppBar() {
         title = { Text(stringResource(R.string.app_name)) },
         actions = {
             // Only show the mode toggle if the device supports spatial UI
-            if (LocalHasXrSpatialFeature.current) {
+            if (LocalSpatialConfiguration.current.hasXrSpatialFeature) {
                 Orbiter(
-                    position = OrbiterEdge.Top,
+                    position = ContentEdge.Top,
                     alignment = Alignment.End,
-                    offset = EdgeOffset.inner(16.dp),
+                    offset = 16.dp,
+                    offsetType = OrbiterOffsetType.InnerEdge,
                     shape = SpatialRoundedCornerShape(
                         CornerSize(percent = 100)
                     ),

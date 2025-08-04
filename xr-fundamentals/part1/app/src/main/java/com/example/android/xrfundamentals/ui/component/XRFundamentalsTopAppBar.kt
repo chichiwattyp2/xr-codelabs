@@ -21,7 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.xr.compose.platform.LocalHasXrSpatialFeature
+import androidx.xr.compose.platform.LocalSpatialConfiguration
 import com.example.android.xrfundamentals.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +30,7 @@ import com.example.android.xrfundamentals.R
         title = { Text(stringResource(R.string.app_name)) },
         actions = {
             // Only show the mode toggle if the device supports spatial UI
-            if (LocalHasXrSpatialFeature.current) {
+            if (LocalSpatialConfiguration.current.hasXrSpatialFeature) {
                 ToggleSpaceModeButton()
             }
         }
