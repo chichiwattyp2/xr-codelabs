@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>A-Frame WebXR Elements Demo</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-htmlembed-component@1.0.0/dist/build.js"></script>
+    <script src="https://unpkg.com/aframe-gesture-detector-component@3.2.2/dist/aframe-gesture-detector-component.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <a-scene renderer="antialias: true; colorManagement: true"
+             background="color: #000"
+             webxr="optionalFeatures: hit-test, hand-tracking, depth-sensing, local-floor"
+             embedded>
+      <a-assets>
+        <a-asset-item id="gltf-model" src="https://cdn.aframe.io/test-models/models/box/box.gltf"></a-asset-item>
+        <video id="stream" autoplay muted playsinline></video>
+      </a-assets>
+
+      <a-entity id="cameraRig">
+        <a-entity id="camera" camera look-controls
+                  cursor="fuse:true; fuseTimeout:1500; rayOrigin:mouse"
+                  raycaster="objects: .interactive"></a-entity>
+      </a-entity>
+
+      <!-- Flat spatial panel -->
+      <a-entity id="mainPanel"
+                class="panel interactive"
+                position="0 1.5 -2"
+                htmlembed="ppu:512"
+                panel>
+        <div class="embed">
+          <h1>Spatial Panel</h1>
+          <p>Glassmorphic panel with embedded HTML.</p>
+          <button class="ui-btn" id="dialogBtn">Open Dialog</button>
+        </div>
+      </a-entity>
+
+      <!-- Curved spatial panel -->
+      <a-entity id="curvedPanel"
+                class="panel interactive"
+                position="1.5 1.5 -2"
+                htmlembed="ppu:512"
+                panel="curve:0.5; radius:1">
+        <div class="embed">
+          <h1>Curved Panel</h1>
+        </div>
+      </a-entity>
+
+      <!-- Orbiting element -->
+      <a-entity id="orbiter"
+                class="orbiter interactive"
+                geometry="primitive: sphere; radius: 0.05"
+                material="color: #00A8E8; opacity: 0.8"
+                position="0 0.2 -2"
+                orbiter="radius:0.3; speed:45">
+      </a-entity>
+
+      <!-- Dialog -->
+      <a-entity id="dialog"
+                class="panel interactive hidden"
+                position="0 1.8 -1.5"
+                htmlembed="ppu:512"
+                elevate-on-enter>
+        <div class="embed">
+          <h2>Dialog Title</h2>
+          <p>Dialog content here.</p>
+          <button class="ui-btn" id="closeDialog">Close</button>
+        </div>
+      </a-entity>
+
+      <!-- Button -->
+      <a-entity id="playButton"
+                class="panel button interactive"
+                position="-0.6 1.2 -1.5"
+                htmlembed="ppu:256"
+                button-actions>
+        <div class="embed">
+          <span class="material-symbols-outlined">play_arrow</span>
+        </div>
+      </a-entity>
+
+      <!-- 3D model -->
+      <a-entity id="model"
+                class="interactive"
+                position="0 1 -1"
+                gltf-model="#gltf-model"
+                gesture-handler
+                annotation="text:3D Model">
+      </a-entity>
+
+      <!-- Video panel -->
+      <a-entity id="videoPanel"
+                class="panel interactive"
+                position="-1.5 1.5 -2"
+                geometry="primitive: plane; height:1; width:1.5"
+                material="shader: flat; src: #stream">
+      </a-entity>
+
+      <!-- Safe zone -->
+      <a-entity safe-zone="radius:1.5"></a-entity>
+
+      <!-- Hands -->
+      <a-entity hand-tracking-controls="hand: left" pointer-feedback></a-entity>
+      <a-entity hand-tracking-controls="hand: right" pointer-feedback></a-entity>
+
+      <!-- Text label -->
+      <a-entity id="label"
+                position="0 2 -1.5"
+                text="value:XR UI; align:center; width:4"
+                auto-scale-text></a-entity>
+
+      <!-- Lights -->
+      <a-entity light="type: ambient; intensity: 0.5"></a-entity>
+      <a-entity light="type: point; intensity: 1" position="0 2 -1"></a-entity>
+
+      <!-- Sky -->
+      <a-sky color="#1a1a1a"></a-sky>
+    </a-scene>
+  </body>
+</html>
